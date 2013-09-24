@@ -19,11 +19,6 @@ class HmacServiceProvider implements ServiceProviderInterface
     {
     }
 
-    public function connect()
-    {
-
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -35,26 +30,5 @@ class HmacServiceProvider implements ServiceProviderInterface
         $app['service.hmac'] = $app->share(function($app) {
                 return new HmacService($app['validator'], $app['request']);
             });
-    }
-
-    /**
-     * Returns hmac middleware for post, put and delete requests
-     * @return callable
-     */
-    private function getHmacMiddleware(Application $app)
-    {
-        $hmacValidation = function (Request $request, Application $app) {
-            $app['service.hmac']->validate(
-                array('app' => $app),
-                $app['request']->getContent()
-            );
-
-            if($app['service.hmac']->hasErrors()) {
-                $this->setErrors($app['service.hmac']->getErrors());
-                return new JsonResponse(array('errors' => $this->getErrorResponse()));
-            }
-        };
-
-        return $hmacValidation;
     }
 }
