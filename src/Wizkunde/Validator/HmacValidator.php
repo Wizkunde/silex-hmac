@@ -3,6 +3,7 @@ namespace Wizkunde\Validator;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Wizkunde\Validator\Constraints as HmacAssert;
+use Wizkunde\Validator\ValidatorInterface;
 
 class HmacValidator implements ValidatorInterface
 {

@@ -8,7 +8,7 @@ use Wizkunde\Service\HmacService;
 
 /**
  * Class ServiceProvider
- * @package MJanssen\Provider
+ * @package Wizkunde\Provider
  */
 class HmacServiceProvider implements ServiceProviderInterface
 {
