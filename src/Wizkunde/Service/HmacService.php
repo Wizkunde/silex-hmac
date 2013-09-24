@@ -1,5 +1,5 @@
 <?php
-namespace MJanssen\Service;
+namespace Wizkunde\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator;
