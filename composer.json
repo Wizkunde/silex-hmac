@@ -3,10 +3,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/marcojanssen/silex-service-register-provider.git"
-        },
-        {
-            "type": "vcs",
             "url": "https://github.com/Wizkunde/silex-errors.git"
         }
     ],
