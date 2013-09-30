@@ -9,7 +9,7 @@
     "require": {
         "php": ">=5.4.0",
         "igorw/config-service-provider": "1.2.*",
-        "marcojanssen/silex-service-register-provider": "dev-master",
+        "marcojanssen/silex-service-register-provider": "1.1.*",
         "silex/silex": "1.1.*",
         "symfony/validator": "~2.3",
         "wizkunde/silex-errors": "dev-master"
