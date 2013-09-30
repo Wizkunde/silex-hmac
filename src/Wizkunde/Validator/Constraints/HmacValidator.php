@@ -4,11 +4,6 @@ namespace Wizkunde\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use Mardy\Hmac\Hmac as MardyHmac;
-use Mardy\Hmac\Headers\Headers;
-use Mardy\Hmac\Headers\Values;
-use Mardy\Hmac\Config\Config as HmacConfig;
-use Mardy\Hmac\Storage\NonPersistent as HmacStorage;
 
 class HmacValidator extends ConstraintValidator
 {
