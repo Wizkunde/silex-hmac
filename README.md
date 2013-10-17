@@ -15,3 +15,5 @@ The request may not be older than 5 minutes.
 
 Installation
 ==========
+
+Add the git repo to your composer.json
