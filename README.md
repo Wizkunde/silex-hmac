@@ -1,7 +1,7 @@
 General information
 ==========
 
-"!https://travis-ci.org/Wizkunde/silex-hmac.png!":https://travis-ci.org/Wizkunde/silex-hmac
+[![Build Status](https://travis-ci.org/Wizkunde/silex-hmac.png)](https://travis-ci.org/Wizkunde/silex-hmac)
 
 This code will provide an easy interface to add a HMAC verification to your project
 
