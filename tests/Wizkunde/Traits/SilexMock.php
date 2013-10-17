@@ -26,8 +26,19 @@ trait SilexMock
         );
 
         $app['service.hmac'] = new HmacService($app['validator'], $this->getMockRequest());
+        $app['request'] = $this->getMockRequest();
 
         return $app;
+    }
+
+    protected function setMockValidator($app)
+    {
+        $hmacService = $this->getMock('Wizkunde\Service\HmacService', array('validate'), array($app['validator'], $app['request']));
+        $hmacService->expects($this->any())
+            ->method('validate')
+            ->will($this->returnValue(true));
+
+        $app['service.hmac'] = $hmacService;
     }
 
     /**
