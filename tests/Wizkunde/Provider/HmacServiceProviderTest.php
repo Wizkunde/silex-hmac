@@ -1,12 +1,14 @@
 <?php
+
 namespace Wizkunde\Provider;
 
-use Silex\Application;
-use Silex\Provider\ValidatorServiceProvider;
-use Wizkunde\Provider\HmacServiceProvider;
+use Wizkunde\Traits\SilexMock;
 
 class ServiceProviderTest extends \PHPUnit_Framework_TestCase
 {
+    // Implement mock application of silex
+    use SilexMock;
+
     /**
      * Test if services are registered
      */
@@ -28,24 +30,5 @@ class ServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app = $this->getMockApplication();
 
         $this->assertInstanceOf('Wizkunde\Service\HmacService', $app['service.hmac']);
-    }
-
-    /**
-     * Get a default silex application
-     * @return Application
-     */
-    protected function getMockApplication()
-    {
-        $app = new Application();
-
-        $app->register(
-            new ValidatorServiceProvider()
-        );
-
-        $app->register(
-            new HmacServiceProvider()
-        );
-
-        return $app;
     }
 }
