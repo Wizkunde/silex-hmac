@@ -37,8 +37,7 @@ class HmacServiceProvider implements ServiceProviderInterface
          */
         $app->before(function (Request $request, Application $app) {
             $app['service.hmac']->validate(
-                $request->attributes->get('section'),
-                $request->getContent()
+                array('app' => $app)
             );
 
             if($app['service.hmac']->hasErrors()) {
