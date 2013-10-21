@@ -3,6 +3,7 @@ namespace Wizkunde\Provider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 use Wizkunde\Service\HmacService;
 
