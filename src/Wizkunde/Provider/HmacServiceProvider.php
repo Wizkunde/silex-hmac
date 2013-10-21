@@ -50,7 +50,7 @@ class HmacServiceProvider implements ServiceProviderInterface
         return function (Request $request, Application $app) {
             $app['service.hmac']->validate(
                 array('app' => $app),
-                $app['request']->getContent()
+                $request->getContent()
             );
 
             if($app['service.hmac']->hasErrors()) {
