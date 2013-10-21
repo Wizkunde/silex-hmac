@@ -41,7 +41,7 @@ class HmacServiceProvider implements ServiceProviderInterface
 
     /**
      * Get the middleware for hmac validation
-     * 
+     *
      * @param Application $app
      * @return callable
      */
