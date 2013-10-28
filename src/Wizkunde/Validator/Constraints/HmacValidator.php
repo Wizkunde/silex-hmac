@@ -13,10 +13,10 @@ class HmacValidator extends ConstraintValidator
     public function validate($app, Constraint $constraint)
     {
         // If hmac validation is disabled
-        if(isset($app['config']['hmac_validate']) && $app['config']['hmac_validate'] === false) {
+        if(isset($app['hmac_validate']) && $app['hmac_validate'] === false) {
             return true;
         }
-            // Check if all the headers are set
+        // Check if all the headers are set
         if(!$this->checkIfHeadersComplete($app)) {
             return;
         }
@@ -27,7 +27,7 @@ class HmacValidator extends ConstraintValidator
         }
 
         // Generate hmac hash from path and key
-        $hmac = hash_hmac("sha1", $this->buildHmacString($app), $app['config']['hmac_key']);
+        $hmac = hash_hmac("sha1", $this->buildHmacString($app), $app['hmac_key']);
 
         // If the hmac's don't match return 403
         if($hmac !== $app['request']->headers->get('hmac')) {
