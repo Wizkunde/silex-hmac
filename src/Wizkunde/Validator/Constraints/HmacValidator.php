@@ -12,7 +12,11 @@ class HmacValidator extends ConstraintValidator
      */
     public function validate($app, Constraint $constraint)
     {
-        // Check if all the headers are set
+        // If hmac validation is disabled
+        if(isset($app['config']['hmac_validate']) && $app['config']['hmac_validate'] === false) {
+            return true;
+        }
+            // Check if all the headers are set
         if(!$this->checkIfHeadersComplete($app)) {
             return;
         }
