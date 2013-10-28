@@ -3,9 +3,9 @@ namespace Wizkunde\Provider;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Wizkunde\Traits\ErrorTrait;
 use Wizkunde\Service\HmacService;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class ServiceProvider
@@ -31,11 +31,10 @@ class HmacServiceProvider implements ServiceProviderInterface
          * Add the HMAC validation service
          */
         $app['service.hmac'] = $app->share(function($app) {
-                return new HmacService($app['validator'], $app['request']);
+            return new HmacService($app['validator'], $app['request']);
         });
 
-        // creates a new controller based on the default route
-        $controllers = $app['controllers_factory'];
+        $controllers = $app['controllers'];
         $controllers->before($this->getHmacMiddleware($app));
     }
 
@@ -47,10 +46,10 @@ class HmacServiceProvider implements ServiceProviderInterface
      */
     private function getHmacMiddleware(Application $app)
     {
-        return function (Request $request, Application $app) {
+        return function () use ($app) {
             $app['service.hmac']->validate(
                 array('app' => $app),
-                $request->getContent()
+                $app['request']->getContent()
             );
 
             if($app['service.hmac']->hasErrors()) {
