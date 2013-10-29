@@ -85,6 +85,6 @@ class HmacValidator extends ConstraintValidator
             $app['request']->headers->get('when')
         );
 
-        return implode($app['config']['hmac_key'], $hmacData);
+        return implode($app['hmac_key'], $hmacData);
     }
 }
