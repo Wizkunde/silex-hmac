@@ -34,8 +34,10 @@ class HmacServiceProvider implements ServiceProviderInterface
             return new HmacService($app['validator'], $app['request']);
         });
 
-        $controllers = $app['controllers'];
-        $controllers->before($this->getHmacMiddleware($app));
+        if(isset($app['hmac_validate']) === false || (isset($app['hmac_validate']) && $app['hmac_validate'] === true)) {
+            $controllers = $app['controllers'];
+            $controllers->before($this->getHmacMiddleware($app));
+        }
     }
 
     /**
